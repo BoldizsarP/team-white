@@ -1,0 +1,15 @@
+version: '3'
+services:
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    volumes:
+      - ./ui/public:/usr/share/nginx/html
+  nginx:
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./ui/public:/usr/share/nginx/html
+    restart: always

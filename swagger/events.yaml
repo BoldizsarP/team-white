@@ -10,7 +10,7 @@ paths:
   /events:
     get:
       summary: Retrieve all events
-      operationId: get_events
+      operationId: api.events.get_events
       responses:
         '200':
           description: Successful operation
@@ -22,7 +22,7 @@ paths:
                   $ref: '#/components/schemas/Event'
     post:
       summary: Create a new event
-      operationId: create_event
+      operationId: api.events.create_event
       requestBody:
         required: true
         content:
@@ -49,7 +49,7 @@ paths:
           type: string
     get:
       summary: Get a specific event
-      operationId: get_event
+      operationId: api.events.get_event
       responses:
         '200':
           description: Successful operation
@@ -61,7 +61,7 @@ paths:
           description: Event not found
     put:
       summary: Update a specific event
-      operationId: update_event
+      operationId: api.events.update_event
       requestBody:
         required: true
         content:
@@ -81,7 +81,7 @@ paths:
           description: Event not found
     delete:
       summary: Delete a specific event
-      operationId: delete_event
+      operationId: api.events.delete_event
       responses:
         '204':
           description: Event deleted successfully

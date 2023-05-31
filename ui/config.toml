@@ -1,7 +1,7 @@
 baseURL = "http://example.com/"
 languageCode = "en-us"
 title = "Vacation Manager"
-theme = "ananke"
+
 
 [params]
   description = "Vacation Manager"

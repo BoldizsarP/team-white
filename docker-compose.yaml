@@ -1,0 +1,16 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./ui:/usr/share/nginx/html
+    restart: always
+
+  ui:
+    build:
+      context: ./ui
+    ports:
+      - 1313:1313
+

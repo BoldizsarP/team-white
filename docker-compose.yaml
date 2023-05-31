@@ -1,16 +1,15 @@
 version: '3'
 services:
-  nginx:
-    image: nginx:latest
-    ports:
-      - 80:80
-    volumes:
-      - ./ui:/usr/share/nginx/html
-    restart: always
-
   ui:
     build:
       context: ./ui
+      dockerfile: Dockerfile
+    volumes:
+      - ./ui/public:/usr/share/nginx/html
+  nginx:
+    image: nginx
     ports:
-      - 1313:1313
-
+      - 80:80
+    volumes:
+      - ./ui/public:/usr/share/nginx/html
+    restart: always

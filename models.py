@@ -4,7 +4,14 @@ from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
+class User(Base):
+    __tablename__ = 'users'
 
+    id = Column(String, primary_key=True)
+    username = Column(String)
+    email = Column(String)
+    role = Column(String)
+    
 class Event(Base):
     __tablename__ = 'events'
 

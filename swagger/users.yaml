@@ -6,6 +6,7 @@ paths:
   /users:
     post:
       summary: Create a new user
+      operationId: api.users.create_user
       requestBody:
         required: true
         content:
@@ -19,10 +20,19 @@ paths:
           description: Invalid request body
         '500':
           description: Internal server error
+    get:
+      summary: Get all users
+      operationId: api.users.get_all_users
+      responses:
+        '200':
+          description: Users found
+        '500':
+          description: Internal server error
 
   /users/{userId}:
     get:
       summary: Get user by ID
+      operationId: api.users.get_user_by_id
       parameters:
         - in: path
           name: userId
@@ -37,9 +47,9 @@ paths:
           description: User not found
         '500':
           description: Internal server error
-
     put:
       summary: Update user by ID
+      operationId: api.users.update_user_by_id
       parameters:
         - in: path
           name: userId

@@ -163,3 +163,8 @@ cython_debug/
 # React components
 /node_modules/
 /build/
+
+# SQLAlchemy database files
+*.db
+*.sqlite
+events.db

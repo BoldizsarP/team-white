@@ -1,16 +1,18 @@
 from datetime import datetime
 import uuid
-from sqlalchemy import Column, String, DateTime
+from sqlalchemy import Column, String, DateTime, Integer
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
-class User(Base):
-    __tablename__ = 'users'
 
-    id = Column(String, primary_key=True)
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
     username = Column(String)
     email = Column(String)
     role = Column(String)
+
     
 class Event(Base):
     __tablename__ = 'events'

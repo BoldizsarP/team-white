@@ -12,6 +12,7 @@ class User(Base):
     username = Column(String)
     email = Column(String)
     role = Column(String)
+    group = Column(String)
 
     
 class Event(Base):

@@ -10,10 +10,11 @@ def get_events():
         events = session.query(Event).all()
         return [event.to_dict() for event in events]
 
-def create_event(request_body):
+def create_event(body):
     with Session() as session:
-        event_data = json.loads(request_body)
-        event = Event(**event_data)
+        # not gen
+        event = Event.from_dict(body)
+        # not gen
         session.add(event)
         session.commit()
         return event.to_dict(), 201
@@ -26,13 +27,11 @@ def get_event(eventId):
         else:
             return "Event not found", 404
 
-def update_event(eventId, request_body):
+def update_event(eventId, body):
     with Session() as session:
-        event_data = json.loads(request_body)
         event = session.query(Event).filter(Event.id == eventId).first()
         if event:
-            for key, value in event_data.items():
-                setattr(event, key, value)
+            event.update_from_dict(body)
             session.commit()
             return event.to_dict()
         else:

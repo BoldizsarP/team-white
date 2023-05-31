@@ -12,14 +12,14 @@ paths:
       summary: Retrieve all events
       operationId: api.events.get_events
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Event'
+                  $ref: "#/components/schemas/Event"
     post:
       summary: Create a new event
       operationId: api.events.create_event
@@ -28,15 +28,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EventInput'
+              $ref: "#/components/schemas/EventInput"
       responses:
-        '201':
+        "201":
           description: Event created successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Event'
-        '400':
+                $ref: "#/components/schemas/Event"
+        "400":
           description: Invalid request payload
 
   /events/{eventId}:
@@ -51,13 +51,13 @@ paths:
       summary: Get a specific event
       operationId: api.events.get_event
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Event'
-        '404':
+                $ref: "#/components/schemas/Event"
+        "404":
           description: Event not found
     put:
       summary: Update a specific event
@@ -67,25 +67,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EventInput'
+              $ref: "#/components/schemas/EventInput"
       responses:
-        '200':
+        "200":
           description: Event updated successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Event'
-        '400':
+                $ref: "#/components/schemas/Event"
+        "400":
           description: Invalid request payload
-        '404':
+        "404":
           description: Event not found
     delete:
       summary: Delete a specific event
       operationId: api.events.delete_event
       responses:
-        '204':
+        "204":
           description: Event deleted successfully
-        '404':
+        "404":
           description: Event not found
 
 components:
@@ -111,6 +111,9 @@ components:
           type: string
           format: date-time
           description: End date and time of the event
+        status:
+          type: string
+          description: Status of the event
       required:
         - id
         - title

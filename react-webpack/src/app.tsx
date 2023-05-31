@@ -1,5 +1,21 @@
 import React, { useState } from "react";
 import { useGetEvents } from "./hooks/useEvents";
+import VacationRequestListPage from "./VacationList";
+import { ThemeProvider } from '@material-ui/styles';
+import { CssBaseline, createTheme } from '@material-ui/core';
+import CreateVacationRequestPage from "./CreateVacationRequestPage";
+
+const theme = createTheme({
+  // Customize your theme here
+  palette: {
+    primary: {
+      main: '#007bff',
+    },
+    secondary: {
+      main: '#6c757d',
+    },
+  },
+});
 
 // Mock data representing events
 const events = [
@@ -47,10 +63,15 @@ function EventCard({ event }: { event: (typeof events)[0] }) {
 
 function App() {
   return (
-    <div>
-      <EventList />
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div>
+        <CreateVacationRequestPage/>
+      </div>
+    </ThemeProvider>
   );
 }
+
+// <VacationRequestListPage />
 
 export default App;

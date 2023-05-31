@@ -73,6 +73,41 @@ paths:
         '500':
           description: Internal server error
 
+  /users/{userId}/role:
+    post:
+      summary: Update user's role by ID
+      operationId: api.users.update_user_role_by_id
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+          description: ID of the user whose role is being updated
+        - in: query
+          name: requesterId
+          required: true
+          schema:
+            type: string
+          description: ID of the user making the role update request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRoleInput'
+      responses:
+        '200':
+          description: User role updated successfully
+        '400':
+          description: Invalid request body or requester ID
+        '404':
+          description: User not found
+        '403':
+          description: Unauthorized access
+        '500':
+          description: Internal server error
+
 components:
   schemas:
     UserInput:
@@ -92,4 +127,14 @@ components:
       required:
         - username
         - email
+        - role
+
+    UserRoleInput:
+      type: object
+      properties:
+        role:
+          type: string
+          enum: [user, admin]
+          description: The updated role of the user
+      required:
         - role
